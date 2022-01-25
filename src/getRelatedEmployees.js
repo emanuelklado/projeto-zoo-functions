@@ -8,12 +8,14 @@ function isManager(id) {
 // console.log(isManager('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
 
 function getRelatedEmployees(managerId) {
-  if (isManager(managerId) === true) {
-    const objEmpregado = employees.filter((element) => element.managers.includes(managerId));
-    const array = [];
-    objEmpregado.forEach((element) =>
-      array.push(`${element.firstName} ${element.lastName}`));
-    return array;
+  if (isManager(managerId)) {
+    return employees.filter((element) => element.managers.includes(managerId))
+      .map((empregado) => `${empregado.firstName} ${empregado.lastName}`);
+    // metodo anterior usando forEach.
+    // const array = [];
+    // objEmpregado.forEach((element) =>
+    //   array.push(`${element.firstName} ${element.lastName}`));
+    // return array;
   }
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
