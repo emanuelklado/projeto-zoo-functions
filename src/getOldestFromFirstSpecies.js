@@ -2,6 +2,7 @@ const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function getOldestFromFirstSpecies(id) {
+  // aqui coletamos o primeiro funcionario gerenciado pelo ID parametro passado e em seguida acessei o primeiro animal gerenciado por este funcionário.
   const primeiroAnimal = employees.find((elemento) => elemento.id === id).responsibleFor[0];
   const resident = species.find((elemento) => elemento.id === primeiroAnimal).residents;
   // usando o sort para retornar o maior. no sorte usei a logica invertida para me retornar valores decrescentes.
